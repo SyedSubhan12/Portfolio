@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Zap, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 import Hero from '@/components/Hero';
 import BackgroundAnimation from '@/components/BackgroundAnimation';
 import Features from '@/components/Features';
@@ -19,6 +20,21 @@ const Index = () => {
       <div className="relative z-10">
         {/* Hero Section */}
         <Hero />
+        
+        {/* Portfolio Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+          className="container mx-auto text-center my-12"
+        >
+          <Link to="/portfolio">
+            <Button className="glass-button bg-gradient-to-r from-[#6C63FF] to-[#00F7FF] hover:shadow-[0_0_20px_rgba(108,99,255,0.5)] transition-all duration-300 text-white px-6 py-6">
+              View Data Science Portfolio
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+        </motion.div>
         
         {/* Features Section */}
         <Features />
