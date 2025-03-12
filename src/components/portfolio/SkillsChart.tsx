@@ -16,6 +16,7 @@ const skills = [
 const SkillsChart = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(true);
   
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -26,6 +27,8 @@ const SkillsChart = () => {
     
     canvas.width = 500;
     canvas.height = 400;
+    
+    let animationFrame: number;
     
     const drawChart = () => {
       if (!ctx) return;
@@ -40,39 +43,72 @@ const SkillsChart = () => {
       skills.forEach((skill, index) => {
         const y = 50 + index * (barHeight + barGap);
         
+        // Draw skill name
         ctx.fillStyle = '#ffffff';
         ctx.font = '16px Arial';
         ctx.textAlign = 'right';
         ctx.fillText(skill.name, startX - 10, y + barHeight / 2 + 5);
         
+        // Draw background bar
         ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
         ctx.fillRect(startX, y, maxBarWidth, barHeight);
         
         const isHovered = hoveredSkill === index;
-        const animationProgress = Math.min(1, (Date.now() % 3000) / 3000);
-        const barWidth = (skill.value / 100) * maxBarWidth * (isHovered ? 1 : animationProgress);
         
+        // Calculate bar width based on animation or hover state
+        let barWidth;
+        if (isAnimating) {
+          const animationProgress = Math.min(1, (Date.now() % 3000) / 3000);
+          barWidth = (skill.value / 100) * maxBarWidth * animationProgress;
+        } else {
+          barWidth = (skill.value / 100) * maxBarWidth * (isHovered ? 1.05 : 1); // Slightly expand when hovered
+        }
+        
+        // Create gradient for skill bar
         const gradient = ctx.createLinearGradient(startX, y, startX + barWidth, y);
         gradient.addColorStop(0, isHovered ? '#00F7FF' : skill.color);
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0.5)');
+        gradient.addColorStop(1, isHovered ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)');
         
+        // Draw skill bar
         ctx.fillStyle = gradient;
         ctx.fillRect(startX, y, barWidth, barHeight);
         
+        // Add glow effect on hover
+        if (isHovered) {
+          ctx.shadowColor = skill.color;
+          ctx.shadowBlur = 15;
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(startX, y, barWidth, barHeight);
+          ctx.shadowBlur = 0;
+        }
+        
+        // Draw skill percentage
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
-        ctx.fillText(`${Math.round(skill.value * (isHovered ? 1 : animationProgress))}%`, startX + barWidth + 10, y + barHeight / 2 + 5);
+        ctx.fillText(
+          `${Math.round(isAnimating ? (skill.value * ((Date.now() % 3000) / 3000)) : skill.value)}%`, 
+          startX + barWidth + 10, 
+          y + barHeight / 2 + 5
+        );
       });
       
-      requestAnimationFrame(drawChart);
+      if (isAnimating) {
+        animationFrame = requestAnimationFrame(drawChart);
+      }
     };
     
     drawChart();
     
+    // Stop animation after 3 seconds
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 3000);
+    
     return () => {
-      // Cleanup animation
+      cancelAnimationFrame(animationFrame);
     };
-  }, [hoveredSkill]);
+  }, [hoveredSkill, isAnimating]);
   
   return (
     <motion.div
@@ -93,6 +129,7 @@ const SkillsChart = () => {
             setHoveredSkill(index >= 0 && index < skills.length ? index : null);
           }}
           onMouseLeave={() => setHoveredSkill(null)}
+          onClick={() => setIsAnimating(prev => !prev)} // Click to restart animation
         />
         {hoveredSkill !== null && (
           <motion.div
@@ -104,6 +141,10 @@ const SkillsChart = () => {
             {skills[hoveredSkill].description}
           </motion.div>
         )}
+      </div>
+      
+      <div className="mt-4 text-center text-xs text-gray-400">
+        <span className="animate-pulse">Click the chart to toggle animation</span>
       </div>
     </motion.div>
   );
