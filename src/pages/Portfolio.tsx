@@ -7,15 +7,19 @@ import BlogSection from '@/components/portfolio/BlogSection';
 import ContactSection from '@/components/portfolio/ContactSection';
 import PortfolioFooter from '@/components/portfolio/PortfolioFooter';
 import DataVisualizationBackground from '@/components/portfolio/DataVisualizationBackground';
-import { motion } from 'framer-motion';
+import TestimonialsSection from '@/components/portfolio/TestimonialsSection';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Portfolio = () => {
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
+  
   return (
     <div className="relative min-h-screen bg-[#0F172A] text-white overflow-hidden">
-      {/* Background Visualization */}
-      <DataVisualizationBackground />
+      <motion.div style={{ opacity }} className="fixed inset-0 z-0">
+        <DataVisualizationBackground />
+      </motion.div>
       
-      {/* Main Content */}
       <div className="relative z-10">
         <PortfolioHero />
         
@@ -27,6 +31,7 @@ const Portfolio = () => {
         >
           <AboutSection />
           <ProjectsSection />
+          <TestimonialsSection />
           <BlogSection />
           <ContactSection />
           <PortfolioFooter />
