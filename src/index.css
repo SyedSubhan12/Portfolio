@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,68 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+/* Glassmorphism styles */
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.glass-button {
+  @apply backdrop-blur-md shadow-lg;
+}
+
+.glass-outline {
+  @apply backdrop-blur-md;
+}
+
+/* Blur ball effect */
+.blur-ball {
+  animation: rotate linear infinite;
+  filter: blur(80px);
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* 3D effect for cards */
+.perspective {
+  perspective: 1000px;
+}
+
+.feature-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  @apply fixed w-6 h-6 rounded-full bg-gradient-to-r from-[#6C63FF] to-[#00F7FF] pointer-events-none z-50 -ml-3 -mt-3;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-trailer {
+  @apply fixed w-12 h-12 rounded-full bg-[#6C63FF]/20 pointer-events-none z-40 -ml-6 -mt-6;
+  transition: transform 0.15s ease;
 }
