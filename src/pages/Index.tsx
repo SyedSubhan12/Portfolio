@@ -1,9 +1,8 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { ArrowRight, Cpu, Zap, Globe } from "lucide-react";
+import { motion, useAnimation } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Hero from '@/components/Hero';
 import BackgroundAnimation from '@/components/BackgroundAnimation';
@@ -11,6 +10,26 @@ import Features from '@/components/Features';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const [isFirstMount, setIsFirstMount] = useState(true);
+  const controls = useAnimation();
+  
+  // Reset animation states when component mounts
+  useEffect(() => {
+    // Reset scroll position when component mounts
+    window.scrollTo(0, 0);
+    
+    // Start animations
+    controls.start("visible");
+    
+    // Mark as mounted
+    setIsFirstMount(true);
+    
+    return () => {
+      // Clean up
+      setIsFirstMount(false);
+    };
+  }, [controls]);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0A1A2F] text-white">
       {/* Background Animation */}
@@ -24,8 +43,10 @@ const Index = () => {
         {/* Portfolio Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
+          animate={controls}
+          variants={{
+            visible: { opacity: 1, y: 0, transition: { delay: 1.5, duration: 0.5 } }
+          }}
           className="container mx-auto text-center my-12"
         >
           <Link to="/portfolio">

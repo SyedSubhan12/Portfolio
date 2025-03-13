@@ -1,13 +1,18 @@
 
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const typingTextRef = useRef<HTMLHeadingElement>(null);
+  const controls = useAnimation();
   
   useEffect(() => {
+    // Reset animations
+    controls.set({ opacity: 0, y: 20 });
+    controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
+    
     // Simple typing effect
     const text = "Empowering AI Solutions";
     const element = typingTextRef.current;
@@ -24,14 +29,17 @@ const Hero = () => {
       };
       typeWriter();
     }
-  }, []);
+    
+    return () => {
+      // Clean up any animations or timers
+    };
+  }, [controls]);
 
   return (
     <section className="relative py-20 md:py-32 px-4 container mx-auto flex flex-col items-center text-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        animate={controls}
         className="max-w-3xl mx-auto"
       >
         <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#6C63FF] via-[#00FF88] to-[#00F7FF] text-transparent bg-clip-text">

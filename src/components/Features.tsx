@@ -9,6 +9,9 @@ const Features = () => {
   const controls = useAnimation();
 
   useEffect(() => {
+    // Reset animation state
+    controls.set("hidden");
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
