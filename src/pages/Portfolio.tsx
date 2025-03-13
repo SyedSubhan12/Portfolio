@@ -9,6 +9,8 @@ import PortfolioFooter from '@/components/portfolio/PortfolioFooter';
 import DataVisualizationBackground from '@/components/portfolio/DataVisualizationBackground';
 import TestimonialsSection from '@/components/portfolio/TestimonialsSection';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Home } from 'lucide-react';
 
 const Portfolio = () => {
   const { scrollYProgress } = useScroll();
@@ -61,6 +63,20 @@ const Portfolio = () => {
   
   return (
     <div className="relative min-h-screen bg-[#0F172A] text-white overflow-hidden">
+      {/* Home button */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-4 left-4 z-50"
+      >
+        <Link to="/">
+          <div className="glass-card bg-white/10 backdrop-blur-md hover:bg-white/20 transition-colors duration-300 border border-white/20 rounded-full p-3 flex items-center justify-center">
+            <Home className="w-5 h-5 text-white" />
+          </div>
+        </Link>
+      </motion.div>
+      
       {/* Scroll progress indicator */}
       <div className="fixed top-0 left-0 w-full h-1 z-50">
         <div 
