@@ -18,6 +18,9 @@ const Index = () => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
     
+    // Reset animation controls
+    controls.set({ opacity: 0, y: 20 });
+    
     // Start animations
     controls.start("visible");
     
