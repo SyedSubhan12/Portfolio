@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,12 +20,11 @@ const ContactSection = () => {
     try {
       setIsSubmitting(true);
       
-      // Replace these with your actual EmailJS service ID, template ID, and public key
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID', 
-        'YOUR_TEMPLATE_ID',
+        'service_vs2vou8', 
+        'template_1e7dr8r',
         formRef.current,
-        'YOUR_PUBLIC_KEY'
+        'qKYtN-HSpH5wIkqyX'
       );
       
       toast({
@@ -36,13 +34,23 @@ const ContactSection = () => {
       
       // Reset form
       formRef.current.reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to send email:', error);
-      toast({
-        title: "Message failed to send",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-      });
+      
+      // Check if it's a 412 error (Precondition Failed)
+      if (error.status === 412) {
+        toast({
+          title: "Authentication Error",
+          description: "Email service needs reconnection. Please contact me directly via email instead.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Message failed to send",
+          description: "Please try again or contact me directly via email.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -78,8 +86,8 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h4 className="text-white font-medium">Email</h4>
-                      <p className="text-gray-400">syedsubhan@example.com</p>
-                      <a href="mailto:syedsubhan@example.com" className="text-[#00BFFF] hover:underline text-sm">
+                      <p className="text-gray-400">syedsubhans132@gmail.com</p>
+                      <a href="mailto:syedsubhans132@gmail.com" className="text-[#00BFFF] hover:underline text-sm">
                         Send an email
                       </a>
                     </div>
@@ -93,7 +101,7 @@ const ContactSection = () => {
                       <h4 className="text-white font-medium">Schedule a Meeting</h4>
                       <p className="text-gray-400">Book a time slot for a virtual meeting</p>
                       <a 
-                        href="https://calendly.com" 
+                        href="https://calendly.com/syedsubhans132/30min" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="text-[#00BFFF] hover:underline text-sm"
@@ -108,7 +116,7 @@ const ContactSection = () => {
                   <h4 className="text-white font-medium mb-4">Connect With Me</h4>
                   <div className="flex space-x-4">
                     <a 
-                      href="https://linkedin.com" 
+                      href="https://www.linkedin.com/in/syedsubhans132/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-[#6C63FF]/20 transition-colors duration-200"
@@ -119,7 +127,7 @@ const ContactSection = () => {
                     </a>
                     
                     <a 
-                      href="https://github.com" 
+                      href="https://github.com/SyedSubhan12" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-[#6C63FF]/20 transition-colors duration-200"
@@ -130,13 +138,13 @@ const ContactSection = () => {
                     </a>
                     
                     <a 
-                      href="https://kaggle.com" 
+                      href="https://www.kaggle.com/syedsubhanshah" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-[#6C63FF]/20 transition-colors duration-200"
                     >
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M17.5 12.5c0 1.93-1.57 3.5-3.5 3.5s-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5zm-3.5-5c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                        <path d="M5.5 2A3.5 3.5 0 002 5.5v13A3.5 3.5 0 005.5 22h13a3.5 3.5 0 003.5-3.5v-13A3.5 3.5 0 0018.5 2h-13zm10.43 8.928a.49.49 0 01-.28.133h-2.54a.5.5 0 00-.38.172l-4.64 5.248a.5.5 0 01-.76-.02l-2.38-2.958a.5.5 0 00-.78 0l-1.43 1.745a.5.5 0 01-.4.184.5.5 0 01-.39-.188.49.49 0 01-.08-.425l2.13-7.348a.5.5 0 01.46-.365h11a.5.5 0 01.48.632l-.01.038-1.65 5.154a.5.5 0 01-.06.153.5.5 0 01-.16.145l-.06.03z"/>
                       </svg>
                     </a>
                   </div>

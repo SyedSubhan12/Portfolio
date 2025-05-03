@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,10 +6,10 @@ import { ArrowRight, Calendar, Clock, Tag } from "lucide-react";
 
 const blogPosts = [
   {
-    title: 'Building Robust ML Pipelines with MLflow',
+    title: 'High Level Data Structures',
     description: 'A step-by-step guide to creating reproducible, deployable machine learning pipelines using MLflow for tracking experiments, packaging models, and streamlining deployment.',
-    date: 'June 15, 2023',
-    readTime: '8 min read',
+    date: 'Feb 6,2025',
+    readTime: '2 min read',
     tags: ['MLOps', 'Pipeline', 'Best Practices'],
     link: '/blog/ml-pipelines'
   },
@@ -84,7 +83,7 @@ const BlogSection = () => {
                 </CardContent>
                 <CardFooter className="mt-auto">
                   <Button 
-                    className="w-full bg-gradient-to-r from-[#6C63FF]/20 to-[#00BFFF]/20 hover:from-[#6C63FF]/30 hover:to-[#00BFFF]/30 text-white"
+                    className="w-full bg-gradient-to-r from-[#6C63FF]/20 to-[#00BFFF]/20 hover:from-[#6C63FF]/30 hover:to-[#00BFFF]/30 text-black"
                     variant="outline"
                   >
                     Read Article
@@ -99,7 +98,7 @@ const BlogSection = () => {
         <div className="flex justify-center mt-12">
           <Button 
             variant="outline" 
-            className="border-[#6C63FF] text-white hover:bg-[#6C63FF]/10"
+            className="border-[#6C63FF] text-white bg-[#6C63FF]/10"
           >
             View All Articles
             <ArrowRight className="ml-2 h-4 w-4" />

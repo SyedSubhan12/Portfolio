@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 const skills = [
   { name: 'Python', value: 95, color: '#6C63FF', description: 'ML/AI Development, Data Processing, Automation' },
   { name: 'TensorFlow/PyTorch', value: 90, color: '#00BFFF', description: 'Deep Learning, Neural Networks, Model Training' },
-  { name: 'SQL/NoSQL', value: 85, color: '#00F7FF', description: 'Data Modeling, Query Optimization, MongoDB' },
-  { name: 'AWS/GCP', value: 80, color: '#6C63FF', description: 'Cloud Infrastructure, Serverless, Container Orchestration' },
+  { name: 'SQL/MySQL', value: 85, color: '#00F7FF', description: 'Data Modeling, Query Optimization, MongoDB' },
+  { name: 'Deep learning', value: 80, color: '#6C63FF', description: 'Cloud Infrastructure, Serverless, Container Orchestration' },
   { name: 'Data Visualization', value: 88, color: '#00BFFF', description: 'D3.js, Plotly, Interactive Dashboards' },
   { name: 'MLOps', value: 82, color: '#00F7FF', description: 'CI/CD for ML, Model Monitoring, Deployment' },
-  { name: 'Big Data (Spark)', value: 78, color: '#6C63FF', description: 'Distributed Computing, Data Processing' },
+  // { name: 'Big Data (Spark)', value: 78, color: '#6C63FF', description: 'Distributed Computing, Data Processing' },
   { name: 'Statistics', value: 85, color: '#00BFFF', description: 'Statistical Analysis, Hypothesis Testing, A/B Testing' }
 ];
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,12 +6,12 @@ import { ArrowRight, Github, ExternalLink, Code, BarChart } from "lucide-react";
 
 const projects = [
   {
-    title: 'Predictive Customer Churn Model',
-    description: 'Developed a machine learning pipeline to predict customer churn for a SaaS company, resulting in a 24% reduction in churn rate through targeted interventions.',
-    tools: ['Python', 'Scikit-learn', 'XGBoost', 'AWS SageMaker'],
-    image: '/placeholder.svg',
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    title: 'Personal Healthcare System',
+    description: 'Your personalized healthcare risk prediction system for proactive health management',
+    tools: ['Python', 'Scikit-learn', 'XGBoost', 'Superbase', 'Vite.js', 'React', 'Tailwind CSS'],
+    image: '/healthcare-dashboard.jpg',
+    github: 'https://github.com/SyedSubhan12/health-risk-compass',
+    demo: 'https://health-risk-compass.vercel.app/',
     metrics: [
       { label: 'Model Accuracy', value: '92%' },
       { label: 'F1 Score', value: '0.88' },
@@ -21,12 +20,12 @@ const projects = [
     ]
   },
   {
-    title: 'NLP-Powered Resume Analyzer',
-    description: 'Built an AI system that analyzes resumes, extracts skills, and matches candidates to job descriptions using natural language processing techniques.',
-    tools: ['Python', 'SpaCy', 'Transformers', 'Flask', 'React'],
-    image: '/placeholder.svg',
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    title: 'Football Match Outcome Prediction',
+    description: 'Built an AI system that analyzes  historical data, team statistics, and other critical factors using natural language processing techniques.',
+    tools: ['Python', 'SpaCy', 'Flask', 'React', 'Scikit-learn'],
+    image: '/football-prediction.jpg',
+    github: 'https://github.com/SyedSubhan12/Football-eureka',
+    demo: 'https://football-eureka.vercel.app/',
     metrics: [
       { label: 'Extraction Accuracy', value: '89%' },
       { label: 'Processing Time', value: '0.9s' },
@@ -35,12 +34,12 @@ const projects = [
     ]
   },
   {
-    title: 'Real-time Data Pipeline for IoT Sensors',
-    description: 'Designed and implemented a scalable data pipeline for processing and analyzing streaming data from IoT devices in real-time.',
-    tools: ['Apache Kafka', 'Spark Streaming', 'Google Cloud', 'BigQuery'],
-    image: '/placeholder.svg',
+    title: 'Readmission Forecast',
+    description: 'Our advanced predictive model helps hospitals identify high-risk patients, reduce readmission rates, and improve care outcomes through targeted interventions.',
+    tools: ['Python', 'Scikit-learn', 'XGBoost', 'Superbase', 'React', 'Tailwind CSS'],
+    image: '/read.jpg',
     github: 'https://github.com',
-    demo: 'https://demo.com',
+    demo: 'https://readmission-frontend-zpww.vercel.app/',
     metrics: [
       { label: 'Throughput', value: '10k msgs/s' },
       { label: 'Latency', value: '< 100ms' },
@@ -76,7 +75,15 @@ const ProjectsSection = () => {
               <Card className="feature-card glass-card bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#6C63FF]/50 transition-all duration-300 h-full flex flex-col">
                 <CardHeader>
                   <div className="mb-4 w-full h-48 bg-white/10 rounded-md flex items-center justify-center overflow-hidden">
-                    <BarChart className="w-16 h-16 text-white/30" />
+                    {project.image ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <BarChart className="w-16 h-16 text-white/30" />
+                    )}
                   </div>
                   <CardTitle className="text-white text-xl">{project.title}</CardTitle>
                   <CardDescription className="text-gray-400">{project.description}</CardDescription>
@@ -103,11 +110,19 @@ const ProjectsSection = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between mt-auto">
-                  <Button variant="outline" size="sm" className="border-white/20 hover:bg-white/10">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="border-white/20 hover:bg-white/10"
+                    onClick={() => window.open(project.github, '_blank')}
+                  >
                     <Github className="mr-2 h-4 w-4" />
                     Code
                   </Button>
-                  <Button className="bg-gradient-to-r from-[#6C63FF] to-[#00BFFF]">
+                  <Button 
+                    className="bg-gradient-to-r from-[#6C63FF] to-[#00BFFF]"
+                    onClick={() => window.open(project.demo, '_blank')}
+                  >
                     Live Demo
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>
@@ -120,8 +135,8 @@ const ProjectsSection = () => {
         <div className="flex justify-center mt-12">
           <Button 
             variant="outline" 
-            className="border-[#6C63FF] text-white hover:bg-[#6C63FF]/10"
-            onClick={() => window.open('https://github.com', '_blank')}
+            className="border-[#6C63FF] text-black hover:bg-[#6C63FF]/10"
+            onClick={() => window.open('https://github.com/SyedSubhan12', '_blank')}
           >
             View More Projects on GitHub
             <ArrowRight className="ml-2 h-4 w-4" />

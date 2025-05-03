@@ -24,7 +24,7 @@ const PortfolioFooter = () => {
           
           <div className="flex space-x-6">
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/syed-subhan-shah-70968a302/"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#6C63FF] transition-colors duration-200"
@@ -32,7 +32,7 @@ const PortfolioFooter = () => {
               LinkedIn
             </a>
             <a 
-              href="https://github.com" 
+              href="https://github.com/SyedSubhan12"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#6C63FF] transition-colors duration-200"
@@ -40,7 +40,7 @@ const PortfolioFooter = () => {
               GitHub
             </a>
             <a 
-              href="https://kaggle.com" 
+              href="https://www.kaggle.com/syedsubhanshah"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#6C63FF] transition-colors duration-200"
@@ -48,7 +48,7 @@ const PortfolioFooter = () => {
               Kaggle
             </a>
             <a 
-              href="mailto:syedsubhan@example.com"
+              href="mailto:syedsubhan132@gmail.com"
               className="text-gray-400 hover:text-[#6C63FF] transition-colors duration-200"
             >
               Email

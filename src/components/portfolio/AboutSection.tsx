@@ -48,6 +48,16 @@ const AboutSection = () => {
                 <CardContent className="p-6 flex items-start space-x-4">
                   <Database className="w-8 h-8 text-[#00BFFF] mt-1" />
                   <div>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Frontend Development</h3>
+                    <p className="text-gray-400">React, Next.js, Tailwind CSS, and TypeScript</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="glass-card bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#00BFFF]/50 transition-all duration-300">
+                <CardContent className="p-6 flex items-start space-x-4">
+                  <Database className="w-8 h-8 text-[#00BFFF] mt-1" />
+                  <div>
                     <h3 className="text-xl font-semibold mb-2 text-white">Data Engineering</h3>
                     <p className="text-gray-400">ETL pipelines, data warehousing, and big data processing</p>
                   </div>
@@ -68,8 +78,8 @@ const AboutSection = () => {
                 <CardContent className="p-6 flex items-start space-x-4">
                   <Cloud className="w-8 h-8 text-[#6C63FF] mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-white">Cloud & Infrastructure</h3>
-                    <p className="text-gray-400">AWS, GCP, containerization, and serverless architecture</p>
+                    <h3 className="text-xl font-semibold mb-2 text-white">Deep Learning</h3>
+                    <p className="text-gray-400">CNNs, RNNs, and LSTMs</p>
                   </div>
                 </CardContent>
               </Card>
