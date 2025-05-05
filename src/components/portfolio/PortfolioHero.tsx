@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
@@ -59,15 +58,6 @@ const PortfolioHero = () => {
             View Projects
             <Github className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Button>
-          
-          <Button 
-            variant="outline" 
-            className="glass-outline relative bg-transparent border border-[#6C63FF] text-white hover:bg-[#6C63FF]/10 transition-all duration-300 px-6 py-6"
-            onClick={() => window.open('/resume.pdf', '_blank')}
-          >
-            Resume
-            <FileText className="ml-2 w-5 h-5" />
           </Button>
           
           <Button
